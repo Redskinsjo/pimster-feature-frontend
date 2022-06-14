@@ -3,7 +3,6 @@ import { MdNotifications, MdNotificationsOff } from "react-icons/md"
 import { Button, TextField, Checkbox, FormControlLabel } from "@mui/material"
 import { useRouter } from "next/router"
 
-import { fetchAPI } from "../lib/api"
 import {
   createNotification,
   getNotifications,
