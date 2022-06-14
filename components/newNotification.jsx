@@ -3,7 +3,6 @@ import { MdLabelImportant } from "react-icons/md"
 
 const NewNotification = ({
   title,
-  body,
   important,
   createdAt,
   viewed,

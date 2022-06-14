@@ -6,7 +6,7 @@ import "../assets/css/style.css"
 import { getStrapiMedia } from "../lib/media"
 import GraphQLProvider from "../gql/index"
 
-const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => {
+const MyApp = ({ Component, pageProps }) => {
   return (
     <>
       <Head>

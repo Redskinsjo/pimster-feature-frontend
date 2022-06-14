@@ -8,7 +8,6 @@ import { client } from "../gql"
 import { signIn } from "../gql/queries"
 
 const LoginForm = ({
-  fields,
   setShouldSignup,
   setError,
   errors,
