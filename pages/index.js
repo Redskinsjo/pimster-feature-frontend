@@ -1,12 +1,6 @@
 import { useState, useEffect } from "react"
 import { MdNotifications, MdNotificationsOff } from "react-icons/md"
-import {
-  Button,
-  TextField,
-  Checkbox,
-  FormGroup,
-  FormControlLabel,
-} from "@mui/material"
+import { Button, TextField, Checkbox, FormControlLabel } from "@mui/material"
 import { useRouter } from "next/router"
 
 import { fetchAPI } from "../lib/api"
@@ -18,7 +12,7 @@ import {
 import { client } from "../gql"
 import NewNotification from "../components/newNotification"
 
-const Home = ({ articles, categories, homepage }) => {
+const Home = () => {
   const [shouldDisconnect, setShouldDisconnect] = useState(false)
   const router = useRouter()
   const [loading, setLoading] = useState(true)
@@ -246,29 +240,6 @@ const Home = ({ articles, categories, homepage }) => {
       </div>
     </div>
   ) : null
-}
-
-export async function getStaticProps() {
-  // Run API calls in parallel
-  const [articlesRes, categoriesRes, homepageRes] = await Promise.all([
-    fetchAPI("/articles", { populate: "*" }),
-    fetchAPI("/categories", { populate: "*" }),
-    fetchAPI("/homepage", {
-      populate: {
-        hero: "*",
-        seo: { populate: "*" },
-      },
-    }),
-  ])
-
-  return {
-    props: {
-      articles: articlesRes.data,
-      categories: categoriesRes.data,
-      homepage: homepageRes.data,
-    },
-    revalidate: 1,
-  }
 }
 
 export default Home
