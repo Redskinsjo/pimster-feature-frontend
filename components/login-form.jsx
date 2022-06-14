@@ -51,7 +51,7 @@ const LoginForm = ({
     >
       <h1 className="font-bold text-2xl">Connect yourself</h1>
       {providers.map((p) => (
-        <ProviderField providerName={p} />
+        <ProviderField key={p} providerName={p} />
       ))}
 
       <hr />
