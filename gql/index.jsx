@@ -12,7 +12,7 @@ const httpLink = createHttpLink({
   uri:
     process.env.NODE_ENV === "development"
       ? "http://localhost:1337/graphql"
-      : process.env.API_PROD_URI + "/api/graphql",
+      : process.env.API_PROD_URI + "/graphql",
   fetch,
 })
 
