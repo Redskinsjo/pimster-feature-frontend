@@ -6,6 +6,9 @@ import CustomField from "./custom-field"
 import { FormContext } from "../pages/authenticate"
 import { client } from "../gql"
 import { signIn } from "../gql/queries"
+import ProviderField from "../components/provider-field"
+
+const providers = ["google", "facebook"]
 
 const LoginForm = ({
   setShouldSignup,
@@ -16,6 +19,10 @@ const LoginForm = ({
 }) => {
   const { handleSubmit } = useContext(FormContext)
   const router = useRouter()
+
+  const renderProvider = (provider) => {
+    return React.createElement()
+  }
 
   const onSubmit = async (data) => {
     try {
@@ -43,6 +50,12 @@ const LoginForm = ({
       className="grid gap-2 border-2 border-black border-solid px-8 py-5"
     >
       <h1 className="font-bold text-2xl">Connect yourself</h1>
+      {providers.map((p) => (
+        <ProviderField providerName={p} />
+      ))}
+
+      <hr />
+
       {["username", "password"].map((field) => (
         <CustomField
           key={field}

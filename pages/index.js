@@ -9,7 +9,7 @@ import {
   updateNotification,
 } from "../gql/queries"
 import { client } from "../gql"
-import NewNotification from "../components/newNotification"
+import NewNotification from "../components/new-notification"
 
 const Home = () => {
   const [shouldDisconnect, setShouldDisconnect] = useState(false)
