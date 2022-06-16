@@ -48,7 +48,10 @@ const Authenticate = () => {
         )
       }
       console.log(
-        window.location.href.match(/(?<=access_token=)[a-zA-Z0-9.\-_]*/)
+        window.location.href.match(/(?<=id_token=)[a-zA-Z0-9.\-_]*/)[0]
+      )
+      console.log(
+        window.location.href.match(/(?<=access_token=)[a-zA-Z0-9.\-_]*/)[0]
       )
       router.replace("/")
     }
