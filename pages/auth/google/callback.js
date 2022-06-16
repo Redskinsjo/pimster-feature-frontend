@@ -17,7 +17,7 @@ const GoogleCallback = () => {
       console.log(googleUser)
       if (googleUser.status === 200) {
         const email = googleUser.data.email
-        const atIndex = email.split("").findIndex("@")
+        const atIndex = email.split("").findIndex((el) => el === "@")
         const username = email.slice(0, atIndex)
 
         const strapiUser = await client.mutate({
