@@ -61,7 +61,7 @@ const LoginForm = ({
       {providers.map((p) => (
         <ProviderField key={p} providerName={p} />
       ))}
-      <div class="g-signin2" data-onsuccess={onSignIn}></div>
+      <div className="g-signin2" data-onsuccess={onSignIn}></div>
       <hr />
 
       {["username", "password"].map((field) => (
