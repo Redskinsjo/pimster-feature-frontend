@@ -11,6 +11,7 @@ const GoogleCallback = () => {
       const googleUser = await fetch(
         `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${token}`
       )
+      console.log(googleUser)
       if (googleUser) {
         const email = googleUser.email
         const atIndex = email.split("").findIndex("@")
@@ -29,10 +30,12 @@ const GoogleCallback = () => {
           router.replace("/")
         } else {
           router.replace("/authenticate")
+          console.log("strapi user wasn't created")
         }
       }
     } catch (err) {
       router.replace("/authenticate")
+      console.log(err.message)
     }
   }
 
