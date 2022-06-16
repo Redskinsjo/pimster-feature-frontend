@@ -23,9 +23,11 @@ const GoogleCallback = () => {
         const strapiUser = await client.mutate({
           mutation: register,
           variables: {
-            username,
-            email,
-            password: email,
+            input: {
+              username,
+              email,
+              password: email,
+            },
           },
         })
         if (strapiUser.data.register) {
