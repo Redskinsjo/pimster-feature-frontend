@@ -107,7 +107,7 @@ const Home = () => {
           <div
             onClick={(e) => {
               e.stopPropagation()
-              setShouldDisplayNotification(true)
+              setShouldDisplayNotification(!shouldDisplayNotification)
             }}
             className="h-full flex items-center relative cursor-pointer hover:bg-slate-100 rounded-full"
           >
@@ -161,6 +161,9 @@ const Home = () => {
             }
             submitNotification(data)
             setShouldDisplayNotification(true)
+            setTitle("")
+            setBody("")
+            setImportant(false)
           }}
           className="p-4 border-b border-solid border-black"
         >
