@@ -30,15 +30,38 @@ const Authenticate = () => {
   })
   const router = useRouter()
 
+  const shouldRedirect = () => {
+    let token = localStorage.getItem("token")
+    return token
+      ? true
+      : window.location.href.includes("id_token")
+      ? "setItem&true"
+      : false
+  }
+
   useEffect(() => {
-    const token = localStorage.getItem("token")
-    if (token) {
+    if (shouldRedirect()) {
+      if (shouldRedirect() === "setItem&true") {
+        localStorage.setItem(
+          "token",
+          window.location.href.match(/(?<=id_token=)[a-zA-Z0-9.\-_]*/)
+        )
+      }
       router.replace("/")
     }
   }, [shouldSignup])
 
   return (
     <div className="h-full flex justify-center items-center">
+      {/* <Head>
+        <meta
+          name="google-signin-client_id"
+          content="685167845575-nnr32ij3koaoh59onour2gan72nthr3i.apps.googleusercontent.com"
+        />
+      </Head>
+      <Script src="../facebook-login.js" />
+      <Script src="https://apis.google.com/js/platform.js" async defer /> */}
+
       <FormContext.Provider value={{ control, handleSubmit }}>
         {shouldSignup ? (
           <SignupForm
