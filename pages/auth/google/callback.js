@@ -1,5 +1,7 @@
 import { useEffect } from "react"
 import { useRouter } from "next/router"
+import axios from "axios"
+
 import { client } from "../../../gql"
 import { register } from "../../../gql/queries"
 
@@ -8,9 +10,10 @@ const GoogleCallback = () => {
 
   const createUseInStrapi = async (token) => {
     try {
-      const googleUser = await fetch(
-        `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${token}`
-      )
+      const googleUser = await axios({
+        method: "get",
+        url: `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${token}`,
+      })
       console.log(googleUser)
       if (googleUser) {
         const email = googleUser.email
