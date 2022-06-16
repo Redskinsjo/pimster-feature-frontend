@@ -44,7 +44,7 @@ const Authenticate = () => {
       if (shouldRedirect() === "setItem&true") {
         localStorage.setItem(
           "token",
-          window.location.href.match(/(?<=id_token=)[a-zA-Z0-9.\-_]*/)
+          window.location.href.match(/(?<=id_token=)[a-zA-Z0-9.\-_]*/)[0]
         )
       }
       console.log(
