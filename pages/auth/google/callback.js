@@ -15,8 +15,8 @@ const GoogleCallback = () => {
         url: `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${token}`,
       })
       console.log(googleUser)
-      if (googleUser) {
-        const email = googleUser.email
+      if (googleUser.status === 200) {
+        const email = googleUser.data.email
         const atIndex = email.split("").findIndex("@")
         const username = email.slice(0, atIndex)
 
