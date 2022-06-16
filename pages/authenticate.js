@@ -53,7 +53,7 @@ const Authenticate = () => {
       console.log(
         window.location.href.match(/(?<=access_token=)[a-zA-Z0-9.\-_]*/)[0]
       )
-      router.replace("/")
+      // router.replace("/")
     }
   }, [shouldSignup])
 
