@@ -47,27 +47,12 @@ const Authenticate = () => {
           window.location.href.match(/(?<=id_token=)[a-zA-Z0-9.\-_]*/)[0]
         )
       }
-      console.log(
-        window.location.href.match(/(?<=id_token=)[a-zA-Z0-9.\-_]*/)[0]
-      )
-      console.log(
-        window.location.href.match(/(?<=access_token=)[a-zA-Z0-9.\-_]*/)[0]
-      )
-      // router.replace("/")
+      router.replace("/")
     }
   }, [shouldSignup])
 
   return (
     <div className="h-full flex justify-center items-center">
-      {/* <Head>
-        <meta
-          name="google-signin-client_id"
-          content="685167845575-nnr32ij3koaoh59onour2gan72nthr3i.apps.googleusercontent.com"
-        />
-      </Head>
-      <Script src="../facebook-login.js" />
-      <Script src="https://apis.google.com/js/platform.js" async defer /> */}
-
       <FormContext.Provider value={{ control, handleSubmit }}>
         {shouldSignup ? (
           <SignupForm

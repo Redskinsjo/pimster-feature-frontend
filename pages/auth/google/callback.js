@@ -25,6 +25,7 @@ const GoogleCallback = () => {
           },
         })
         if (strapiUser.data.register) {
+          localStorage.setItem("token", strapiUser.data.register.jwt)
           router.replace("/")
         } else {
           router.replace("/authenticate")
