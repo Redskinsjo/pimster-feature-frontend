@@ -2,36 +2,24 @@ import { useEffect } from "react"
 import { useRouter } from "next/router"
 import axios from "axios"
 
-import { client } from "../../../gql"
-import { register } from "../../../gql/queries"
-
 const GoogleCallback = () => {
   const router = useRouter()
 
-  const createUseInStrapi = async (token) => {
+  const createUseInStrapi = async (qParams) => {
+    const access_token = qParams.match(/(?<=access_token=)[a-zA-Z0-9.\-_]*/)
     try {
-      const googleUser = await axios({
+      const firstRequest = await axios({
         method: "get",
-        url: `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${token}`,
+        url: `https://pimster-feature-backend.herokuapp.com/api/auth/google/callback/?${qParams}`,
       })
       console.log(googleUser)
-      if (googleUser.status === 200) {
-        const email = googleUser.data.email
-        const atIndex = email.split("").findIndex((el) => el === "@")
-        const username = email.slice(0, atIndex)
-
-        const newStrapiUser = await client.mutate({
-          mutation: register,
-          variables: {
-            input: {
-              username,
-              email,
-              password: email,
-            },
-          },
+      if (firstRequest.user) {
+        const newStrapiUser = await axios({
+          method: "get",
+          url: `https://pimster-feature-backend.herokuapp.com/api/auth/google/callback/?access_token=${access_token}`,
         })
-        if (newStrapiUser.data.register) {
-          localStorage.setItem("token", newStrapiUser.data.register.jwt)
+        if (newStrapiUser.user) {
+          localStorage.setItem("token", newStrapiUser.jwt)
           router.replace("/")
         } else {
           router.replace("/authenticate")
@@ -40,15 +28,15 @@ const GoogleCallback = () => {
       }
     } catch (err) {
       // if (err.message === "Email is already taken")
-      // router.replace("/authenticate")
+      router.replace("/authenticate")
       console.log(err.message)
     }
   }
 
   useEffect(() => {
-    // createUseInStrapi(
-    //   window.location.href.match(/(?<=access_token=)[a-zA-Z0-9.\-_]*/)[0]
-    // )
+    createUseInStrapi(
+      window.location.href.match(/(?<=\?)[a-zA-Z0-9.\-_=&%]*/)[0]
+    )
   }, [])
 
   return <div></div>
