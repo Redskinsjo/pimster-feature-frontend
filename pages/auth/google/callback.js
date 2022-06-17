@@ -20,7 +20,7 @@ const GoogleCallback = () => {
         const atIndex = email.split("").findIndex((el) => el === "@")
         const username = email.slice(0, atIndex)
 
-        const strapiUser = await client.mutate({
+        const newStrapiUser = await client.mutate({
           mutation: register,
           variables: {
             input: {
@@ -30,8 +30,8 @@ const GoogleCallback = () => {
             },
           },
         })
-        if (strapiUser.data.register) {
-          localStorage.setItem("token", strapiUser.data.register.jwt)
+        if (newStrapiUser.data.register) {
+          localStorage.setItem("token", newStrapiUser.data.register.jwt)
           router.replace("/")
         } else {
           router.replace("/authenticate")
@@ -39,7 +39,8 @@ const GoogleCallback = () => {
         }
       }
     } catch (err) {
-      router.replace("/authenticate")
+      // if (err.message === "Email is already taken")
+      // router.replace("/authenticate")
       console.log(err.message)
     }
   }
