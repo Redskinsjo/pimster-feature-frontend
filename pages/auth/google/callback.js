@@ -12,7 +12,6 @@ const GoogleCallback = () => {
         method: "get",
         url: `https://pimster-feature-backend.herokuapp.com/api/auth/google/callback/?${qParams}`,
       })
-      console.log(googleUser)
       if (firstRequest.user) {
         const newStrapiUser = await axios({
           method: "get",
