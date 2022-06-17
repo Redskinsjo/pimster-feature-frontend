@@ -19,7 +19,7 @@ const GoogleCallback = () => {
           url: `https://pimster-feature-backend.herokuapp.com/api/auth/google/callback/?access_token=${access_token}`,
         })
         if (newStrapiUser.status === 200) {
-          localStorage.setItem("token", newStrapiUser.jwt)
+          localStorage.setItem("token", newStrapiUser.data.jwt)
           router.replace("/")
         } else {
           router.replace("/authenticate")
