@@ -13,12 +13,12 @@ const GoogleCallback = () => {
         url: `https://pimster-feature-backend.herokuapp.com/api/auth/google/callback/?${qParams}`,
       })
       console.log(firstRequest)
-      if (firstRequest.user) {
+      if (firstRequest.status === 200) {
         const newStrapiUser = await axios({
           method: "get",
           url: `https://pimster-feature-backend.herokuapp.com/api/auth/google/callback/?access_token=${access_token}`,
         })
-        if (newStrapiUser.user) {
+        if (newStrapiUser.status === 200) {
           localStorage.setItem("token", newStrapiUser.jwt)
           router.replace("/")
         } else {
