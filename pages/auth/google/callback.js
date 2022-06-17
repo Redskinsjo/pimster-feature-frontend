@@ -46,9 +46,9 @@ const GoogleCallback = () => {
   }
 
   useEffect(() => {
-    createUseInStrapi(
-      window.location.href.match(/(?<=access_token=)[a-zA-Z0-9.\-_]*/)[0]
-    )
+    // createUseInStrapi(
+    //   window.location.href.match(/(?<=access_token=)[a-zA-Z0-9.\-_]*/)[0]
+    // )
   }, [])
 
   return <div></div>
