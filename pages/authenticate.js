@@ -6,7 +6,7 @@ import LoginForm from "../components/login-form"
 import SignupForm from "../components/signup-form"
 
 const initialFormValues = {
-  username: "",
+  // username: "",
   email: "",
   password: "",
 }

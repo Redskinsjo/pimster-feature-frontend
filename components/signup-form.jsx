@@ -20,10 +20,9 @@ const SignupForm = ({
     try {
       const user = await client.mutate({
         mutation: register,
-        variables: { input: { ...data } },
+        variables: { input: { ...data, username: "test" } },
       })
       if (user.data.register) {
-        console.log(user.data.register.user.username)
         const token = user.data.register.jwt
         localStorage.setItem("token", token)
         setShouldSignup(false)

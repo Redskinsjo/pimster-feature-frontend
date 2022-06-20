@@ -51,7 +51,7 @@ const LoginForm = ({
       ))}
       <hr />
 
-      {["username", "password"].map((field) => (
+      {["email", "password"].map((field) => (
         <CustomField
           key={field}
           name={field}
