@@ -8,7 +8,7 @@ import { client } from "../gql"
 import { signIn } from "../gql/queries"
 import ProviderField from "../components/provider-field"
 
-const providers = ["google"]
+const providers = ["google", "facebook"]
 
 const LoginForm = ({
   setShouldSignup,
