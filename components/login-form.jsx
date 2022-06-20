@@ -43,7 +43,7 @@ const LoginForm = ({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="grid gap-2 border-2 border-black border-solid px-8 py-5"
+      className="grid gap-2 border-[0.5px] rounded-3xl border-black border-solid px-8 py-5"
     >
       <h1 className="font-bold text-2xl">Connect yourself</h1>
       {providers.map((p) => (

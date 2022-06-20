@@ -102,8 +102,8 @@ const Home = () => {
       onClick={() => setShouldDisplayNotification(false)}
       className="flex flex-col h-full"
     >
-      <div className="p-[6px] flex items-center justify-end">
-        <div className="flex items-center relative h-[37px]">
+      <div className="absolute w-full p-[6px] flex items-center justify-end">
+        <div className="flex items-center relative h-[37px] mr-[10px]">
           <div
             onClick={(e) => {
               e.stopPropagation()
@@ -165,7 +165,7 @@ const Home = () => {
             setBody("")
             setImportant(false)
           }}
-          className="p-4 border-b border-solid border-black"
+          className="p-4 border-[0.5px] rounded-3xl border-b border-solid border-black"
         >
           <h4>Create a notification</h4>
           <div className="flex h-[30px] items-center">

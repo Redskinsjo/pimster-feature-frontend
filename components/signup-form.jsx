@@ -41,7 +41,7 @@ const SignupForm = ({
   return (
     <form
       onSubmit={handleSubmit(onClick)}
-      className="grid grid-cols-1 gap-2 border-2 border-black border-solid px-8 py-5"
+      className="grid grid-cols-1 gap-2 border-[0.5px] rounded-3xl border-black border-solid px-8 py-5"
     >
       <h1 className="col-span-1 font-bold text-2xl text-center">
         Sign up here
